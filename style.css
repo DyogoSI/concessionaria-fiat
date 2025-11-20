@@ -1,0 +1,764 @@
+/* ======================================================= */
+/* ESTILOS GERAIS E VARIÁVEIS                              */
+/* ======================================================= */
+
+/* --- CORREÇÃO DEFINITIVA PARA OVERFLOW --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+/* --- FIM DA CORREÇÃO --- */
+
+
+:root {
+    --cor-principal: #c72a2a; /* Vermelho Fiat */
+    --cor-texto: #333;
+    --cor-fundo: #f4f4f4;
+    --cor-branco: #fff;
+    --cor-preto: #000;
+    --padding-container: clamp(15px, 4vw, 25px); /* Padding responsivo */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--padding-container);
+}
+
+/* ======================================================= */
+/* COMPONENTES GERAIS                                      */
+/* ======================================================= */
+
+/* --- Cabeçalho / Navbar --- */
+.navbar {
+    background-color: var(--cor-preto);
+    padding-block: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 100;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: var(--padding-container);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.navbar-logo {
+    width: clamp(80px, 15vw, 100px);
+    flex-shrink: 0;
+}
+
+.navbar-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cor-branco);
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    white-space: nowrap;
+}
+
+.navbar-location img {
+    width: 18px;
+    height: 18px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: clamp(15px, 4vw, 30px);
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: clamp(15px, 4vw, 30px);
+}
+
+.navbar ul a {
+    color: var(--cor-branco);
+    text-decoration: none;
+    font-weight: 300;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-right: 15px;
+}
+
+.navbar ul a::after {
+    content: '›';
+    font-size: 1.4rem;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.navbar ul a:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(5px);
+}
+
+.navbar ul a:hover {
+    padding-right: 25px;
+}
+
+.navbar a:hover {
+    color: #ccc;
+}
+
+/* --- Banner Principal (Hero) --- */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-banner-link {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10%;
+    height: 8%;
+    border-radius: 6px;
+    z-index: 2;
+}
+
+/* --- Grupo de Banners (sobreposto) --- */
+.banner-group {
+    display: flex;
+    gap: clamp(15px, 3vw, 30px);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-inline: var(--padding-container);
+    width: 100%;
+    margin-top: -120px;
+    position: relative;
+    z-index: 3;
+}
+
+/* --- Banner Promocional (item flex) --- */
+.promo-banner {
+    position: relative;
+    line-height: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    flex: 1;
+    min-width: 0;
+}
+
+.promo-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.promo-banner-link {
+    position: absolute;
+    bottom: 8%;
+    left: 4%;
+    width: 30%;
+    height: 18%;
+    display: block;
+    z-index: 2;
+}
+
+
+/* --- Título Principal com Imagem (Página Fiat) --- */
+.main-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 2vw, 20px);
+    margin-bottom: clamp(20px, 4vw, 30px);
+    margin-top: clamp(20px, 5vw, 40px);
+}
+
+.title-logo {
+    width: clamp(30px, 6vw, 50px);
+    height: auto;
+}
+
+header h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    text-align: center;
+    margin: 0;
+}
+
+
+/* --- Busca --- */
+.busca-container {
+    text-align: center;
+    margin-bottom: clamp(30px, 6vw, 50px);
+}
+
+.busca-container input {
+    width: 100%;
+    max-width: 600px;
+    padding: 14px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* --- Vitrine e Cards (Grid) --- */
+.vitrine {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(20px, 4vw, 30px);
+}
+
+/* ===== CORREÇÃO DA ANIMAÇÃO APLICADA AQUI ===== */
+.carro-card {
+    background-color: var(--cor-branco);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    /* Propriedades para a animação de entrada */
+    opacity: 0;
+    transform: translateY(30px);
+    
+    /* Transição unificada para todas as animações */
+    transition: opacity 0.6s ease-out, 
+                transform 0.4s ease-out, 
+                box-shadow 0.4s ease-out;
+}
+
+.carro-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.carro-card.is-visible:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+/* ===== FIM DA CORREÇÃO ===== */
+
+.carro-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.carro-card h2 {
+    font-size: clamp(1.1rem, 3vw, 1.25rem);
+    margin: 15px 0 5px;
+}
+
+.preco {
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    font-weight: bold;
+    color: var(--cor-principal);
+    margin-top: auto;
+}
+
+.detalhe-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--padding-container);
+    z-index: 1000;
+}
+
+.detalhe-card {
+    background-color: var(--cor-branco);
+    padding: clamp(30px, 5vw, 45px);
+    padding-top: clamp(45px, 8vw, 60px);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 550px;
+    position: relative;
+    text-align: center;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.detalhe-card img {
+    max-width: 80%;
+    margin-bottom: 20px;
+}
+
+.fechar-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.fechar-btn:hover {
+    background-color: #d1d1d1;
+    transform: rotate(90deg);
+}
+
+.comprar-btn {
+    display: inline-block;
+    background-color: var(--cor-principal);
+    color: var(--cor-branco);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.banner-container-imagem {
+    position: relative;
+    margin-bottom: clamp(30px, 6vw, 50px);
+    line-height: 0;
+}
+
+.banner-container-imagem img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.cta-invisivel {
+    position: absolute;
+    bottom: 8%;
+    left: 4%;
+    width: 15%;
+    height: 10%;
+    display: block;
+}
+
+.footer {
+    color: #555;
+    padding: clamp(40px, 8vw, 60px) var(--padding-container) 20px;
+    margin-top: clamp(40px, 8vw, 80px);
+    border-top: 1px solid #ddd;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 40px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.footer-logo {
+    flex-basis: 150px;
+    flex-grow: 1;
+}
+
+.footer-logo img {
+    width: 120px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 40px;
+    flex-basis: 700px;
+    flex-grow: 9999;
+}
+
+.link-column {
+    flex-basis: 180px;
+    flex-grow: 1;
+}
+
+.link-column h4 {
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.link-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.link-column li {
+    margin-bottom: 10px;
+}
+
+.link-column a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.link-column a:hover {
+    color: var(--cor-principal);
+}
+
+.footer-legal {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-legal p {
+    margin: 5px 0;
+}
+
+.footer-social {
+    text-align: center;
+}
+
+.footer-social a {
+    display: inline-block;
+    margin: 0 12px;
+    color: #444;
+}
+
+.footer-social svg {
+    width: 24px;
+    height: 24px;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.footer-social a:hover {
+    color: var(--cor-principal);
+    transform: scale(1.1);
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .navbar-left {
+        gap: 15px; 
+    }
+    .navbar-location,
+    .navbar ul {
+        display: none;
+    }
+
+    .navbar ul.active {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--cor-preto);
+        position: absolute;
+        top: 65px;
+        left: 0;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+    }
+    
+    .navbar ul li {
+        padding: 10px 0;
+    }
+
+    .navbar ul a:hover {
+        padding-right: 15px;
+    }
+
+    .navbar ul a:hover::after {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .banner-group {
+        flex-direction: column;
+        margin-top: 30px; 
+    }
+}
+
+/* ======================================================= */
+/* ESTILOS DOS BOTÕES NOS CARDS                            */
+/* ======================================================= */
+.info-extra {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.card-buttons {
+    margin-top: auto; 
+    padding-top: 15px; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 10px;
+    color: var(--cor-branco);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+    clip-path: polygon(8% 0, 100% 0, 92% 100%, 0% 100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.btn-quero {
+    background-color: #e5202b; 
+}
+
+.btn-whatsapp {
+    background-color: #34a853;
+}
+
+.btn-whatsapp svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+/* ======================================================= */
+/* ESTILO DO BOTÃO DE LOGIN NA NAVBAR                      */
+/* ======================================================= */
+
+.navbar-login {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cor-branco);
+    text-decoration: none;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+    margin-left: auto; 
+}
+
+.navbar-login:hover {
+    color: #ccc;
+}
+
+.navbar-login svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 1.5;
+}
+
+@media (max-width: 768px) {
+    .navbar-login span {
+        display: none;
+    }
+}
+
+/* ======================================================= */
+/* ANIMAÇÕES                                               */
+/* ======================================================= */
+
+.detalhe-overlay {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.detalhe-card {
+    animation: scaleUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.btn:hover,
+.comprar-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* ======================================================= */
+/* SEÇÃO DE OPORTUNIDADES (FINANCIAMENTO, ETC.)            */
+/* ======================================================= */
+
+.opportunities-section {
+    width: 100vw; /* Largura total da tela */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Usei o mesmo fundo bege da sua página Abarth */
+    background-color: #f0ebe5; 
+    padding: clamp(40px, 8vw, 60px) var(--padding-container);
+    margin-top: clamp(40px, 8vw, 80px); /* Espaço acima da seção */
+    overflow: hidden; 
+}
+
+.opportunities-container {
+     max-width: 1200px; /* Alinha o conteúdo com o resto do site */
+     margin: 0 auto;
+     position: relative;
+     z-index: 2;
+}
+
+/* Ajusta o título para este novo container */
+.opportunities-section .main-title-container {
+    justify-content: flex-start; /* Alinha o título à esquerda */
+    margin-top: 0;
+    margin-bottom: clamp(30px, 5vw, 40px);
+}
+
+.opportunities-section .main-title-container h2 {
+    font-size: clamp(1.3rem, 4vw, 1.8rem); /* Título um pouco menor */
+    color: var(--cor-texto);
+    text-align: left;
+    line-height: 1.3;
+}
+
+.opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(20px, 4vw, 30px);
+}
+
+.opportunity-card {
+    background-color: var(--cor-branco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.opportunity-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+}
+
+.opportunity-card-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz os cards terem a mesma altura */
+}
+
+.opportunity-card h3 {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--cor-texto);
+    margin: 0 0 10px 0;
+}
+
+.opportunity-card p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+    flex-grow: 1; 
+}
+
+/* Animação de entrada (igual ao .carro-card) */
+.opportunity-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, 
+                transform 0.4s ease-out, 
+                box-shadow 0.4s ease-out;
+}
+
+.opportunity-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.opportunity-card.is-visible:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Ajuste para centralizar o título em telas menores */
+@media (max-width: 768px) {
+    .opportunities-section .main-title-container {
+         justify-content: center;
+    }
+     .opportunities-section .main-title-container h2 {
+        text-align: center;
+    }
+}
