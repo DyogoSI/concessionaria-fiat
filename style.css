@@ -762,3 +762,54 @@ header h1 {
         text-align: center;
     }
 }
+
+/* ======================================================= */
+/* ESTILOS DO ÍCONE DE NOTIFICAÇÃO (SINO SVG)              */
+/* ======================================================= */
+
+.notification-container {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #fff; /* Define a cor do sino como BRANCO */
+}
+
+.notification-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+    /* Stroke usa a cor definida no container (branco) */
+}
+
+/* Efeito de balanço ao passar o mouse */
+.notification-container:hover .notification-icon {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--cor-principal); /* Vermelho Fiat */
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000; /* Borda preta para destacar no fundo escuro */
+    z-index: 10;
+}
+
+/* Ajuste para Mobile */
+@media (max-width: 768px) {
+    .notification-container {
+        margin-right: 10px;
+    }
+}
