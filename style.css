@@ -2,7 +2,6 @@
 /* ESTILOS GERAIS E VARIÁVEIS                              */
 /* ======================================================= */
 
-/* --- CORREÇÃO DEFINITIVA PARA OVERFLOW --- */
 *,
 *::before,
 *::after {
@@ -14,8 +13,6 @@ body {
     width: 100%;
     overflow-x: hidden;
 }
-/* --- FIM DA CORREÇÃO --- */
-
 
 :root {
     --cor-principal: #c72a2a; /* Vermelho Fiat */
@@ -23,7 +20,7 @@ body {
     --cor-fundo: #f4f4f4;
     --cor-branco: #fff;
     --cor-preto: #000;
-    --padding-container: clamp(15px, 4vw, 25px); /* Padding responsivo */
+    --padding-container: clamp(15px, 4vw, 25px);
 }
 
 html {
@@ -164,7 +161,7 @@ body {
     z-index: 2;
 }
 
-/* --- Grupo de Banners (sobreposto) --- */
+/* --- Grupo de Banners --- */
 .banner-group {
     display: flex;
     gap: clamp(15px, 3vw, 30px);
@@ -178,7 +175,6 @@ body {
     z-index: 3;
 }
 
-/* --- Banner Promocional (item flex) --- */
 .promo-banner {
     position: relative;
     line-height: 0;
@@ -205,8 +201,7 @@ body {
     z-index: 2;
 }
 
-
-/* --- Título Principal com Imagem (Página Fiat) --- */
+/* --- Título Principal --- */
 .main-title-container {
     display: flex;
     align-items: center;
@@ -227,7 +222,6 @@ header h1 {
     margin: 0;
 }
 
-
 /* --- Busca --- */
 .busca-container {
     text-align: center;
@@ -243,14 +237,13 @@ header h1 {
     border-radius: 8px;
 }
 
-/* --- Vitrine e Cards (Grid) --- */
+/* --- Vitrine e Cards --- */
 .vitrine {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: clamp(20px, 4vw, 30px);
 }
 
-/* ===== CORREÇÃO DA ANIMAÇÃO APLICADA AQUI ===== */
 .carro-card {
     background-color: var(--cor-branco);
     border: 1px solid #ddd;
@@ -262,15 +255,9 @@ header h1 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    /* Propriedades para a animação de entrada */
     opacity: 0;
     transform: translateY(30px);
-    
-    /* Transição unificada para todas as animações */
-    transition: opacity 0.6s ease-out, 
-                transform 0.4s ease-out, 
-                box-shadow 0.4s ease-out;
+    transition: opacity 0.6s ease-out, transform 0.4s ease-out, box-shadow 0.4s ease-out;
 }
 
 .carro-card.is-visible {
@@ -282,7 +269,6 @@ header h1 {
     transform: translateY(-8px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
-/* ===== FIM DA CORREÇÃO ===== */
 
 .carro-card img {
     max-width: 100%;
@@ -369,27 +355,7 @@ header h1 {
     transition: opacity 0.2s, transform 0.2s;
 }
 
-.banner-container-imagem {
-    position: relative;
-    margin-bottom: clamp(30px, 6vw, 50px);
-    line-height: 0;
-}
-
-.banner-container-imagem img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-}
-
-.cta-invisivel {
-    position: absolute;
-    bottom: 8%;
-    left: 4%;
-    width: 15%;
-    height: 10%;
-    display: block;
-}
-
+/* --- Footer --- */
 .footer {
     color: #555;
     padding: clamp(40px, 8vw, 60px) var(--padding-container) 20px;
@@ -503,14 +469,8 @@ header h1 {
 }
 
 @media (max-width: 768px) {
-    .navbar-left {
-        gap: 15px; 
-    }
-    .navbar-location,
-    .navbar ul {
-        display: none;
-    }
-
+    .navbar-left { gap: 15px; }
+    .navbar-location, .navbar ul { display: none; }
     .navbar ul.active {
         display: flex;
         flex-direction: column;
@@ -523,32 +483,14 @@ header h1 {
         text-align: center;
         box-shadow: 0 4px 5px rgba(0,0,0,0.2);
     }
-    
-    .navbar ul li {
-        padding: 10px 0;
-    }
-
-    .navbar ul a:hover {
-        padding-right: 15px;
-    }
-
-    .navbar ul a:hover::after {
-        display: none;
-    }
-
-    .menu-icon {
-        display: block;
-    }
-
-    .banner-group {
-        flex-direction: column;
-        margin-top: 30px; 
-    }
+    .navbar ul li { padding: 10px 0; }
+    .navbar ul a:hover { padding-right: 15px; }
+    .navbar ul a:hover::after { display: none; }
+    .menu-icon { display: block; }
+    .banner-group { flex-direction: column; margin-top: 30px; }
 }
 
-/* ======================================================= */
-/* ESTILOS DOS BOTÕES NOS CARDS                            */
-/* ======================================================= */
+/* --- Botões Extras --- */
 .info-extra {
     font-size: 0.9rem;
     color: #666;
@@ -577,24 +519,11 @@ header h1 {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.btn-quero {
-    background-color: #e5202b; 
-}
+.btn-quero { background-color: #e5202b; }
+.btn-whatsapp { background-color: #34a853; }
+.btn-whatsapp svg { width: 16px; height: 16px; margin-right: 8px; }
 
-.btn-whatsapp {
-    background-color: #34a853;
-}
-
-.btn-whatsapp svg {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-}
-
-/* ======================================================= */
-/* ESTILO DO BOTÃO DE LOGIN NA NAVBAR                      */
-/* ======================================================= */
-
+/* --- Login Navbar --- */
 .navbar-login {
     display: flex;
     align-items: center;
@@ -607,82 +536,44 @@ header h1 {
     margin-left: auto; 
 }
 
-.navbar-login:hover {
-    color: #ccc;
-}
+.navbar-login:hover { color: #ccc; }
+.navbar-login svg { width: 28px; height: 28px; stroke-width: 1.5; }
+@media (max-width: 768px) { .navbar-login span { display: none; } }
 
-.navbar-login svg {
-    width: 28px;
-    height: 28px;
-    stroke-width: 1.5;
-}
+/* --- Animações --- */
+.detalhe-overlay { animation: fadeIn 0.3s ease-out forwards; }
+.detalhe-card { animation: scaleUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleUp { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+.btn:hover, .comprar-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
 
-@media (max-width: 768px) {
-    .navbar-login span {
-        display: none;
-    }
-}
-
-/* ======================================================= */
-/* ANIMAÇÕES                                               */
-/* ======================================================= */
-
-.detalhe-overlay {
-    animation: fadeIn 0.3s ease-out forwards;
-}
-
-.detalhe-card {
-    animation: scaleUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes scaleUp {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.btn:hover,
-.comprar-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-/* ======================================================= */
-/* SEÇÃO DE OPORTUNIDADES (FINANCIAMENTO, ETC.)            */
-/* ======================================================= */
-
+/* --- SEÇÃO OPORTUNIDADES --- */
 .opportunities-section {
-    width: 100vw; /* Largura total da tela */
+    width: 100vw;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    /* Usei o mesmo fundo bege da sua página Abarth */
     background-color: #f0ebe5; 
     padding: clamp(40px, 8vw, 60px) var(--padding-container);
-    margin-top: clamp(40px, 8vw, 80px); /* Espaço acima da seção */
+    margin-top: clamp(40px, 8vw, 80px);
     overflow: hidden; 
 }
 
 .opportunities-container {
-     max-width: 1200px; /* Alinha o conteúdo com o resto do site */
+     max-width: 1200px;
      margin: 0 auto;
      position: relative;
      z-index: 2;
 }
 
-/* Ajusta o título para este novo container */
 .opportunities-section .main-title-container {
-    justify-content: flex-start; /* Alinha o título à esquerda */
+    justify-content: flex-start;
     margin-top: 0;
     margin-bottom: clamp(30px, 5vw, 40px);
 }
 
 .opportunities-section .main-title-container h2 {
-    font-size: clamp(1.3rem, 4vw, 1.8rem); /* Título um pouco menor */
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
     color: var(--cor-texto);
     text-align: left;
     line-height: 1.3;
@@ -701,6 +592,9 @@ header h1 {
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.4s ease-out, box-shadow 0.4s ease-out;
 }
 
 .opportunity-card img {
@@ -715,7 +609,7 @@ header h1 {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Faz os cards terem a mesma altura */
+    flex-grow: 1;
 }
 
 .opportunity-card h3 {
@@ -734,39 +628,17 @@ header h1 {
     flex-grow: 1; 
 }
 
-/* Animação de entrada (igual ao .carro-card) */
-.opportunity-card {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, 
-                transform 0.4s ease-out, 
-                box-shadow 0.4s ease-out;
-}
+.opportunity-card.is-visible { opacity: 1; transform: translateY(0); }
+.opportunity-card.is-visible:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
 
-.opportunity-card.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.opportunity-card.is-visible:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-/* Ajuste para centralizar o título em telas menores */
 @media (max-width: 768px) {
-    .opportunities-section .main-title-container {
-         justify-content: center;
-    }
-     .opportunities-section .main-title-container h2 {
-        text-align: center;
-    }
+    .opportunities-section .main-title-container { justify-content: center; }
+    .opportunities-section .main-title-container h2 { text-align: center; }
 }
 
 /* ======================================================= */
-/* ESTILOS DO ÍCONE DE NOTIFICAÇÃO (SINO SVG)              */
+/* ÍCONE DE NOTIFICAÇÃO (SINO SVG)                         */
 /* ======================================================= */
-
 .notification-container {
     position: relative;
     cursor: pointer;
@@ -774,26 +646,22 @@ header h1 {
     align-items: center;
     justify-content: center;
     margin-right: 15px;
-    color: #fff; /* Define a cor do sino como BRANCO */
+    color: #fff;
 }
 
 .notification-icon {
     width: 24px;
     height: 24px;
     transition: transform 0.3s ease;
-    /* Stroke usa a cor definida no container (branco) */
 }
 
-/* Efeito de balanço ao passar o mouse */
-.notification-container:hover .notification-icon {
-    transform: rotate(15deg) scale(1.1);
-}
+.notification-container:hover .notification-icon { transform: rotate(15deg) scale(1.1); }
 
 .notification-badge {
     position: absolute;
     top: -5px;
     right: -5px;
-    background-color: var(--cor-principal); /* Vermelho Fiat */
+    background-color: var(--cor-principal);
     color: #fff;
     font-size: 0.65rem;
     font-weight: bold;
@@ -803,13 +671,103 @@ header h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #000; /* Borda preta para destacar no fundo escuro */
+    border: 1px solid #000;
     z-index: 10;
 }
 
-/* Ajuste para Mobile */
+@media (max-width: 768px) { .notification-container { margin-right: 10px; } }
+
+/* ======================================================= */
+/* 👇 SEÇÃO NOSSA PAIXÃO (ATUALIZADA COM PULO) 👇          */
+/* ======================================================= */
+
+.passion-section {
+    background-color: #f0ebe5; 
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 var(--padding-container) clamp(40px, 8vw, 60px);
+}
+
+.passion-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.passion-section .main-title-container {
+    justify-content: flex-start;
+    margin-top: 0;
+    margin-bottom: clamp(30px, 5vw, 40px);
+}
+
+.passion-section h2 {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    color: var(--cor-texto);
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.passion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.passion-card {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.4s ease-out;
+    cursor: pointer; /* Indica interatividade */
+}
+
+.passion-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* EFEITO DE PULO AO PASSAR O MOUSE */
+.passion-card.is-visible:hover {
+    transform: translateY(-12px); /* Pula 12px para cima */
+}
+
+.passion-card h3 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0 0 15px 0;
+}
+
+.passion-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    /* Transição suave para a sombra */
+    transition: box-shadow 0.4s ease;
+}
+
+/* SOMBRA PROFUNDA AO PASSAR O MOUSE */
+.passion-card.is-visible:hover img {
+    box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+}
+
+.passion-card p {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+}
+
 @media (max-width: 768px) {
-    .notification-container {
-        margin-right: 10px;
-    }
+    .passion-section .main-title-container { justify-content: center; }
+    .passion-section h2 { text-align: center; }
 }

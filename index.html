@@ -108,7 +108,6 @@
                                 <p>Com ou sem entrada, aqui você encontra o financiamento ideal para realizar o sonho do carro novo.</p>
                             </div>
                         </div>
-
                         <div class="opportunity-card">
                             <img src="https://www.fiat.com.br/content/dam/fiat/nova-home/teste/consorcio.webp" alt="Fiat Pulse branco"> 
                             <div class="opportunity-card-content">
@@ -116,7 +115,6 @@
                                 <p>No consórcio Fiat você investe e conquista um carro novinho em folha. Parcelas sem entrada e sem juros.</p>
                             </div>
                         </div>
-
                         <div class="opportunity-card">
                             <img src="https://www.fiat.com.br/content/dam/fiat/nova-home/teste/novo-plano-home.webp" alt="Fiat Toro Ranch no campo">
                             <div class="opportunity-card-content">
@@ -124,7 +122,6 @@
                                 <p>O financiamento pensado para você que vive na terra.</p>
                             </div>
                         </div>
-
                         <div class="opportunity-card">
                             <img src="https://www.fiat.com.br/content/dam/fiat/nova-home/teste/profissionais.webp" alt="Fiat Strada para vendas diretas">
                             <div class="opportunity-card-content">
@@ -132,7 +129,6 @@
                                 <p>Um programa feito para empresas, com condições e ofertas exclusivas.</p>
                             </div>
                         </div>
-
                         <div class="opportunity-card">
                             <img src="https://www.fiat.com.br/content/dam/fiat/pulse-my26/assets-home/desconto-pcd.webp" alt="Fiat Pulse para PCD">
                             <div class="opportunity-card-content">
@@ -140,13 +136,40 @@
                                 <p>Vá além com a Fiat! Conheça os benefícios exclusivos para pessoas com deficiência.</p>
                             </div>
                         </div>
-
                         <div class="opportunity-card">
                             <img src="https://www.fiat.com.br/content/dam/fiat/nova-home/teste/seminovos.webp" alt="Fiat Cronos seminovo">
                             <div class="opportunity-card-content">
                                 <h3>FIAT SEMINOVOS</h3>
                                 <p>Mais tranquilidade e segurança na compra de usados com a Spotcar, nossa parceira oficial.</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="passion-section">
+                <div class="passion-container">
+                    <div class="main-title-container">
+                        <img src="icons/flag-red.webp" alt="Logo Fiat Vermelho" class="title-logo">
+                        <h2>NOSSA PAIXÃO VAI ALÉM DE CARROS.</h2>
+                    </div>
+                    <div class="passion-grid">
+                        <div class="passion-card">
+                            <h3>FIAT LOVERS</h3>
+                            <img src="icons/fiat lovers.png" alt="Fiat Lovers">
+                            <p>Apaixone-se pela vida com o Fiat Lovers, o clube de vantagens para quem busca experiências memoráveis. Descubra os nossos benefícios exclusivos!</p>
+                        </div>
+                        
+                        <div class="passion-card">
+                            <h3>FIAT COMUNITÀ</h3>
+                             <img src="icons/fiat comunita.png" alt="Fiat Comunità">
+                            <p>Apoiar questões sociais, com foco na sustentabilidade e na diversidade, está no nosso DNA. Juntos fazemos a diferença: conheça a Fiat Comunità.</p>
+                        </div>
+
+                        <div class="passion-card">
+                            <h3>FIAT WEAR</h3>
+                             <img src="icons/fiat wear.png" alt="Fiat Wear">
+                            <p>Viva o lifestyle Fiat também fora das estradas e mostre seu estilo único com as peças da Fiat Wear.</p>
                         </div>
                     </div>
                 </div>
@@ -239,8 +262,8 @@
         });
     </script>
     <script>
-        // Este script agora anima TODOS os cards
-        const cards = document.querySelectorAll('.carro-card, .opportunity-card');
+        // Este script agora anima TODOS os cards (incluindo os novos)
+        const cards = document.querySelectorAll('.carro-card, .opportunity-card, .passion-card');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
